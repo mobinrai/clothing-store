@@ -1,23 +1,54 @@
 @import "tailwindcss";
 
 :root{
-  --color-border:#e5e5e5;
-  --color-button:#f5f5f5;
-  --color-link:#535353;
-  --color-text:#535353;
-  --color-background:#f5f5f5;
+    --color-border:#e5e5e5;
+    --color-button:#f5f5f5;
+    --color-link:#191616;
+    --color-text:#535353;
+    --color-background:#cacaca;
 }
 
 body{
-  font-family: "DM Sans", sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 
 @keyframes slideText {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-100%, 0);
-  }
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
 }
+@layer utilities{
+    .change-on-hover{
+        @apply hover:text-[#e94328]!
+    }
+}
+
+@layer components{
+    .section-title{
+        @apply mb-12 font-bold text-2xl;
+    }
+    .services-title{
+        @apply font-bold text-[18px] capitalize
+    }
+    .add-subt-btn{
+        @apply absolute z-10 top-1.5 cursor-pointer hover:text-red-600
+    }
+    .product-single_share-faq{
+        @apply flex gap-2 items-center cursor-pointer text-(--color-text) text-[12px] transition-all duration-500 hover:text-[#e94328]!
+    }
+    input[type=radio]+span{
+        @apply w-full h-11 font-bold text-xs uppercase cursor-pointer mb-0 border-[#e7e7e7] border rounded-[3px] transition-all duration-75 text-(--color-title) items-center justify-center py-4 flex hover:border-black
+    }
+    input[type=radio]:checked+span{
+       @apply bg-black border border-black text-white 
+    }
+    
+}
+
+
+
+

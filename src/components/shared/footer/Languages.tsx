@@ -2,19 +2,19 @@ import { MenuItem, Select, Stack, Typography } from '@mui/material'
 
 const Languages = () => {
     const languages=[
-            {
-                code:'de',
-                name:'deutsch'
-            },
-            {
-                code:'gb',
-                name:'English'
-            },
-            {
-                code:'fr',
-                name:'francais'
-            }
-        ]
+        {
+            code:'de',
+            name:'deutsch'
+        },
+        {
+            code:'gb',
+            name:'English'
+        },
+        {
+            code:'fr',
+            name:'francais'
+        }
+    ]
     return (
         <Select value={languages[0].code} sx={{minWidth:'30%', mb:1}}>
             {

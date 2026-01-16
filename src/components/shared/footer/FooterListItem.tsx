@@ -23,6 +23,11 @@ const FooterListItem = ({
                     "& .MuiListItemText-primary": {
                     fontSize: "0.75rem",
                     color: "var(--color-link)",
+                    cursor:'pointer',
+                    transition:'color .3s linear',
+                    ":hover":{
+                        color:'red'
+                    }
                     },
                 }}
                 />
