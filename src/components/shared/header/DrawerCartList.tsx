@@ -5,6 +5,9 @@ import type { ShowShoppingOrSearchContent } from "../../../types/commonTypes";
 import StyledButton from "../styled/StyledButton";
 import { Link } from "react-router";
 const DrawerCartList = ({showCart,toggleContent}:{showCart:boolean,toggleContent:(name:ShowShoppingOrSearchContent)=>void }) => {
+    const onClick=()=>{
+        toggleContent('shoppingCart')
+    }
     return (
         <Drawer open={showCart} anchor="right">
         <Stack sx={{ width: "420px" }}>
@@ -12,7 +15,7 @@ const DrawerCartList = ({showCart,toggleContent}:{showCart:boolean,toggleContent
             direction={"row"}
             justifyContent={"space-between"}
             padding={"20px 10px"}            >
-                <h6 className="uppercase font-bold">My cart</h6> <Close onClick={()=>toggleContent('shoppingCart')} sx={{cursor:'pointer'}}/>
+                <h6 className="uppercase font-bold">My cart</h6> <Close onClick={onClick} sx={{cursor:'pointer'}}/>
             </Stack>
             <Divider/>
             <Stack gap={2} padding={3} sx={{overflowY:'auto', bgcolor:"rgba(175,175,175,0.1)", height:'560px', mx:2}}>
@@ -32,7 +35,7 @@ const DrawerCartList = ({showCart,toggleContent}:{showCart:boolean,toggleContent
             <Stack sx={{my:2, boxShadow:'2px -10px 8px -1px rgba(200,200,200,0.8)', py:2, px:3}}>
                 <p className="py-2"><span className="font-bold">Total</span></p>
                 <Divider/>
-                <Link to={'/view-cart'} className="w-full">
+                <Link to={'/cart'} className="w-full" onClick={onClick}>
                     <StyledButton sx={{mt:2, width:'100%'}}>view cart</StyledButton>
                 </Link>
             </Stack>

@@ -1,10 +1,10 @@
 import { RemoveRedEye, VisibilityOff } from "@mui/icons-material";
 import React from "react";
 import { Box, Stack, TextField } from "@mui/material";
-import type { RHFCustomFormProps } from "../../../types/formTypes";
+import type { CustomFormProps } from "../../../types/formTypes";
 import type { FieldValues } from "react-hook-form";
 
-const PasswordField = <T extends FieldValues>({name,register, error}:RHFCustomFormProps<T>) => {
+const PasswordField = <T extends FieldValues>({name,register, error}:CustomFormProps<T>) => {
     const [isPassowrdShown, setIsPassowrdShown] = React.useState<boolean>(false);
     const handleTogglePassword = () => {
         setIsPassowrdShown((prev) => !prev);

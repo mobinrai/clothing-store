@@ -19,6 +19,7 @@ import DrawerCartList from "./DrawerCartList";
 import SearchFormDrawer from "./SearchFormDrawer";
 import { useToggleSearchAndCart } from "../../../hooks/useToggleSearchAndCart";
 import HeaderAuthLink from "./HeaderAuthLink";
+import { Link } from "react-router";
 
 const TopHeader = () => {
     const {showCart, showSearchForm, toggleContent}= useToggleSearchAndCart()
@@ -33,7 +34,9 @@ const TopHeader = () => {
                         alignItems={"center"}
                         marginRight={1}
                         >
-                        <h1>Clothing Store</h1>
+                        <Link to={'/'}>
+                            <h1 className="font-bold"><span className="text-red-500 text-2xl -mr-1 italic">Clothing</span> Store</h1>
+                        </Link>
                         <Stack
                             direction={"row"}
                             sx={{ display: { xs: "none", sm: "flex", lg: "none" } }}

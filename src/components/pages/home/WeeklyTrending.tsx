@@ -4,7 +4,6 @@ import {
     Grid,
     Rating,
     Stack,
-    TextField,
 } from "@mui/material";
 import WeeklyImg1 from "@images/products/weekly-1.webp";
 import WeeklyImg2 from "@images/products/weekly-2.webp";
@@ -12,30 +11,19 @@ import WeeklyImg3 from "@images/products/weekly-3.webp";
 import WeeklyImg4 from "@images/products/weekly-4.webp";
 import StyledButton from "../../shared/styled/StyledButton";
 import {
-    Add,
     FreeCancellationOutlined,
     HelpOutlineOutlined,
-    HorizontalRule,
     LocalShippingOutlined,
     QuizOutlined,
     Share,
     StarOutlineOutlined,
 } from "@mui/icons-material";
 import CustomRoundedDiv from "../../shared/styled/CustomRoundedDiv";
-import React, { useState } from "react";
 import ChooseSize from "../../shared/size";
+import AddSubtractButton from "../../shared/addSub/AddSubtractButton";
 
 const WeeklyTrending = () => {
-    const [productQty, setProductQty] = useState(1);
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const value = event.target.value.trim();
-        if (value.length > 3) {
-        return false;
-        }
-        if (parseInt(value)) {
-        setProductQty(parseInt(value));
-        }
-    };
+   
     const weeklyImages = [WeeklyImg1, WeeklyImg2, WeeklyImg3, WeeklyImg4];
     return (
         <section className="weeklytrending mb-20">
@@ -88,30 +76,7 @@ const WeeklyTrending = () => {
                     sx={{ position: "relative", alignItems: "center" }}
                     gap={2}
                     >
-                    <Box sx={{ position: "relative", display: "inline-flex" }}>
-                        <a className="add-subt-btn left-2">
-                        <HorizontalRule sx={{ fontSize: "16px" }} />
-                        </a>
-                        <TextField
-                        value={productQty}
-                        onChange={handleChange}
-                        sx={{}}
-                        slotProps={{
-                            input: {
-                            sx: {
-                                borderRadius: 10,
-                                width: "120px",
-                                padding: "5px !important",
-                                paddingX: "25px !important",
-                                height: "40px !important",
-                            },
-                            },
-                        }}
-                        />
-                        <a className="add-subt-btn right-2">
-                        <Add sx={{ fontSize: "16px" }} />
-                        </a>
-                    </Box>
+                    <AddSubtractButton/>
                     <StyledButton
                         sx={{
                         top: 0,
