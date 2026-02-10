@@ -1,61 +1,21 @@
-import { Box, Stack } from '@mui/material'
+import { Stack } from "@mui/material";
+import React from "react";
+import DisplaySizes from "./DisplaySizes";
 
-const ChooseSize = () => {
+const ChooseSize = ({ availableSizes }: { availableSizes: string[] }) => {
+    
+    const [selectedSize, setSelectedSize] = React.useState(availableSizes[0]);
+
+    const handleChange=(event:React.ChangeEvent<HTMLInputElement>)=>{
+        setSelectedSize(event.target.value)
+    }
     return (
-        <Stack direction={"row"} gap={{md:0, lg:2}}>
-            <Box sx={{ padding: "2.5px", width: "54px" }}>
-            <input
-                className="radioLabel"
-                type="radio"
-                style={{ display: "none" }}
-                value={"xs"}
-                name="size"
-                checked
-            />
-            <span>xs</span>
-            </Box>
-            <Box sx={{ padding: "2.5px", width: "54px" }}>
-            <input
-                className="sizeRadio"
-                type="radio"
-                style={{ display: "none" }}
-                value={"s"}
-                name="size"
-            />
-            <span>S</span>
-            </Box>
-            <Box sx={{ padding: "2.5px", width: "54px" }}>
-            <input
-                className="sizeRadio"
-                type="radio"
-                style={{ display: "none" }}
-                value={"m"}
-                name="size"
-            />
-            <span>M</span>
-            </Box>
-            <Box sx={{ padding: "2.5px", width: "54px" }}>
-            <input
-                className="sizeRadio"
-                type="radio"
-                style={{ display: "none" }}
-                value={"l"}
-                name="size"
-            />
-            <span>L</span>
-            </Box>
-            <Box sx={{ padding: "2.5px", width: "54px" }}>
-            <input
-                className="sizeRadio"
-                type="radio"
-                style={{ display: "none" }}
-                value={"xl"}
-                name="size"
-            />
-            <span>XL</span>
-            </Box>
+        <Stack direction={"row"} gap={{ md: 0, lg: 2 }} flexWrap={'wrap'}>
+            {availableSizes.map((size) => (
+                <DisplaySizes key={size} size={size} selectedSize={selectedSize} handleChange={handleChange}/>
+            ))}
         </Stack>
-    )
-}
+    );
+};
 
-export default ChooseSize
+export default ChooseSize;

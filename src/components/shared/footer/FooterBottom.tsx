@@ -16,9 +16,9 @@ const FooterBottom = () => {
                                 </Stack>
                                 <Stack direction={'row'} alignItems={'center'}>
                                     <LocationPin/>
-                                    <span style={{color:'var(--color-text)', fontSize:12}}>Chicago Store: 5400 N. Lakewood Ave, Chicago, IL 60640</span>
-                                    
-                                </Stack>                                
+                                    <span style={{color:'var(--color-text)', fontSize:12}}>
+                                        Chicago Store: 5400 N. Lakewood Ave, Chicago, IL 60640</span>
+                                </Stack>
                             </Stack>
                         </Grid>
                         <Grid size={{xs:12,md:6,lg:4}}>
@@ -27,8 +27,9 @@ const FooterBottom = () => {
                                     <CountriesWithCurrency/>
                                     <Languages/>
                                 </Stack>
-                                <span style={{color:'var(--color-text)',fontSize:13}} >Copyright @ {new Date().getFullYear()} Clothing store.All Rights Reserved.
-                            </span>
+                                <span style={{color:'var(--color-text)',fontSize:13}} >
+                                    Copyright @ {new Date().getFullYear()} Clothing store.All Rights Reserved.
+                                </span>
                            </Stack>
                         </Grid>
                         <Grid size={{xs:12,md:6,lg:4}}>

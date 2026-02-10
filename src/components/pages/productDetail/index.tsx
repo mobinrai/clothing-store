@@ -1,311 +1,178 @@
-import {
-  Box,
-  Container,
-  Divider,
-  Grid,
-  Stack,
-} from "@mui/material";
-import ChooseSize from "../../shared/size";
-import StyledButton from "../../shared/styled/StyledButton";
-import { orange } from "@mui/material/colors";
-import {
-    ArrowCircleDownOutlined,
-    ArrowForward,
-    AssignmentReturnOutlined,
-    CommentOutlined,
-    EuroOutlined,
-    HistoryToggleOffOutlined,
-    LocalShippingOutlined,
-    ShoppingBag,
-} from "@mui/icons-material";
-import Tshirt1 from "@images/products/t-shirt-1.jpg";
-import Tshirt2 from "@images/products/t-shirt-2.jpg";
-import Tshirt3 from "@images/products/t-shirt-3.jpg";
+import { Box, Container, Divider, Grid, Paper, Stack } from "@mui/material";
 import CustomLink from "../../shared/styled/CustomLink";
 import SingleProductImage from "./../../shared/singleProductImage";
 import SingleProductDetails from "./../../shared/singleProductDetails";
-import CustomAccordion from "../../shared/CustomAccordion";
-
+import ProductDescription from "./ProductDescription";
+import MyRatings from "../../shared/ratings/MyRatings";
+import MainProductDetail from "./MainProductDetail";
+import { useRef } from "react";
 
 const index = () => {
-    const details=[{
-        title:'Materials & Care',
-        summary:`Main material 1 :50 % nylon ,40 % viscose ,5 % wool ,5 % cashmere
-                    Contains non-textile parts of animal origin
-                    Care instructions
-
-                    Special gentle wash cycle 30°
-                    Do not bleach
-                    No dryer
-                    Do not iron at high temperatures; take care when ironing with steam.
-                    Do not dry clean`
-    },{
-        title:'Details',
-        summary:`The model is 188cm tall and wears size M.
-                    Men's knit sweater by Christian Berg Men
-                    Material mix with cashmere content
-                    Regular Fit
-                    Chunky knit
-                    round neck
-                    Back length for size M: 69 cm
-                    Sleeve length for size M: 77 cm
-                    Article number: 1732111
-                    Supplier number: 50644510244`
+    const detailsRef= useRef<HTMLDivElement>(null)
+    const handleClick=()=>{
+        if (detailsRef.current) {
+            detailsRef.current.scrollIntoView({
+                behavior:'smooth',
+                block:'start'
+            })
+        }
     }
-]
+    const details = [
+        {
+        title: "Materials & Care",
+        summary: `Main material 1 :50 % nylon ,40 % viscose ,5 % wool ,5 % cashmere
+                        Contains non-textile parts of animal origin
+                        Care instructions
+
+                        Special gentle wash cycle 30°
+                        Do not bleach
+                        No dryer
+                        Do not iron at high temperatures; take care when ironing with steam.
+                        Do not dry clean`,
+        },
+        {
+        title: "Details",
+        summary: `The model is 188cm tall and wears size M.
+                        Men's knit sweater by Christian Berg Men
+                        Material mix with cashmere content
+                        Regular Fit
+                        Chunky knit
+                        round neck
+                        Back length for size M: 69 cm
+                        Sleeve length for size M: 77 cm
+                        Article number: 1732111
+                        Supplier number: 50644510244`,
+        },
+    ];
+    
     return (
         <section className="my-20">
-        <Container maxWidth={false}>
-            <Grid container spacing={4}>
-            <Grid size={{ xs:12,md:8,lg: 7 }}>
-                <Box sx={{ position: "sticky", top: "10px" }}>
-                <img src={Tshirt1} alt="" />
-                <Stack direction={"row"} mt={2} gap={4}>
-                    <p>
-                    <input
-                        type="radio"
-                        name=""
-                        id=""
-                        value=""
-                        className="hidden"
-                    />
-                    <img
-                        src={Tshirt1}
-                        alt=""
-                        style={{ width: "76px", height: "70px" }}
-                    />
-                    </p>
-                    <img
-                    src={Tshirt3}
-                    alt=""
-                    style={{ width: "76px", height: "70px" }}
-                    />
-                    <img
-                    src={Tshirt2}
-                    alt=""
-                    style={{ width: "76px", height: "70px" }}
-                    />
-                    <img
-                    src={Tshirt3}
-                    alt=""
-                    style={{ width: "76px", height: "70px" }}
-                    />
-                </Stack>
-                <button className="flex items-center mt-4 cursor-pointer justify-end">
-                    <h1 className="text-2xl">See details</h1>
-                    <ArrowCircleDownOutlined
-                    sx={{ fontSize: "60px", color: "GrayText" }}
-                    />
-                </button>
+            <Container maxWidth={false}>
+                <Grid container spacing={4}>
+                    <MainProductDetail handleClick={handleClick}/>
+                </Grid>
+                <Stack sx={{ my: 5 }}>
+                <Divider />
+                <h6 className="font-extrabold mt-2 mb-4">
+                    Products related to this item
+                </h6>
+                <Box
+                    sx={{
+                    overflowX: "hidden",
+                    position: "relative",
+                    width: "100%",
+                    }}
+                >
+                    <Stack
+                    direction={"row"}
+                    sx={{
+                        overflowX: "scroll",
+                        scrollBehavior: "smooth",
+                        scrollbarColor:'red',
+                        overflowY: "hidden",
+                        gap: 1,
+                        width: "100%",
+                    }}
+                    >
+                    {[...Array(12)].map((_, index) => (
+                        <Box
+                        key={index}
+                        sx={{
+                            flex: {
+                                xs: "0 0 49%",
+                                sm: "0 0 32.5%",
+                                md: "0 0 24.3%",
+                                lg: "0 0 16.2%",
+                            },
+                            minWidth: 0,
+                            pb: 2,
+                        }}
+                        >
+                            <CustomLink href="/itm/1234" className="productImageLink">
+                            <SingleProductImage />
+                            </CustomLink>
+                            <SingleProductDetails />
+                        </Box>
+                    ))}
+                    </Stack>
                 </Box>
-            </Grid>
-            <Grid size={{ xs:12,md:4,lg: 5 }}>
-                <Stack gap={3} position={"relative"}>
-                <Stack>
-                    <h6 className="font-extrabold text-2xl">adidas sportsware</h6>
-                    <span className="text-(--color-text) mb-3">
-                    men's sport ware for running
-                    </span>
-                    <span>Regarding material, details and care</span>
                 </Stack>
-                <span>
-                    <EuroOutlined fontSize="small" /> 104.99 vat included
-                </span>
-                <span>
-                    previously:{" "}
-                    <del>
-                    <b>$104.99</b>
-                    </del>{" "}
-                    <span className="text-xs ml-2 text-red-500 font-bold">
-                    {" "}
-                    -27% discount
-                    </span>
-                </span>
-                <div>
-                    <h6 className="mb-2">choose size</h6>
-                    <ChooseSize />
-                </div>
-                <Stack>
-                    <span>size guide: how to find the perfect fit</span>
-                    <span>The model is 190cm tall and wears size M.</span>
-                </Stack>
-                <Stack gap={2} sx={{ position: "relative" }}>
-                    <Box sx={{ display: "contents" }}>
-                    <select
-                        name=""
-                        id=""
-                        className="border py-1 px-2 w-1/4 border-gray-400 rounded-2xl cursor-pointer"
-                    >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    </Box>
-                    <StyledButton
+                <Stack sx={{ my: 5 }}>
+                <Divider />
+                <h6 className="font-extrabold mt-2 mb-4">
+                    More products from seller
+                </h6>
+                    <Box
                     sx={{
-                        py: 1.5,
-                        backgroundColor: orange[300],
-                        width: {md:'100%',lg:"50%"},
-                        color: "#000",
+                    overflowX: "hidden",
+                    position: "relative",
+                    width: "100%",
                     }}
-                    hoverBackgroundColor={orange[700]}
-                    endIcon={<ArrowForward />}
-                    >
-                    Add to cart
-                    </StyledButton>
-                    <StyledButton
+                >
+                    <Stack
+                    direction={"row"}
                     sx={{
-                        py: 1.5,
-                        backgroundColor: orange[400],
-                        width: {md:'100%',lg:"50%"},
-                        "& .MuiButton-endIcon": {
-                        transform: "rotate(0deg)",
-                        },
+                        overflowX: "scroll",
+                        scrollBehavior: "smooth",
+                        scrollbarColor:'red',
+                        overflowY: "hidden",
+                        gap: 1,
+                        width: "100%",
                     }}
-                    hoverBackgroundColor={orange[900]}
-                    endIcon={<ShoppingBag />}
                     >
-                    Buy now
-                    </StyledButton>
+                    {[...Array(12)].map((_, index) => (
+                        <Box
+                        key={index}
+                        sx={{
+                            flex: {
+                                xs: "0 0 49%",
+                                sm: "0 0 32.5%",
+                                md: "0 0 24.3%",
+                                lg: "0 0 16.2%",
+                            },
+                            minWidth: 0,
+                            pb: 2,
+                        }}
+                        >
+                            <CustomLink href="/itm/1234" className="productImageLink">
+                            <SingleProductImage />
+                            </CustomLink>
+                            <SingleProductDetails />
+                        </Box>
+                    ))}
+                    </Stack>
+                </Box>
                 </Stack>
-                <div className="flex gap-2 flex-col text-(--color-text) text-sm font-bold">
-                    <span>
-                    Express delivery with DHL GoGreen if you order within the next
-                    0 hours 0 minutes.
-                    </span>
-                    <p>
-                    <HistoryToggleOffOutlined />{" "}
-                    <span>1-2 working days delivery time</span>
-                    </p>
-                    <p>
-                    <LocalShippingOutlined />
-                    <span> Free shipping on orders over €49.90</span>
-                    </p>
-                    <p>
-                    <AssignmentReturnOutlined />
-                    <span>62-day free return shipping</span>
-                    </p>
+                <div ref={detailsRef} id="details" className="flex gap-4 scroll-smooth">
+                <h1 className="text-2xl font-extrabold">Details</h1>
                 </div>
-                <p>
-                    <CommentOutlined />
-                    Report an issue with this product or seller
-                </p>
-                <Stack>
-                    <p className="border-b border-gray-300">About seller</p>
-                    <p className="text-(--color-text) text-sm ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-                    exercitationem libero autem quam at, iure unde excepturi
-                    perferendis dolore tenetur. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Nulla exercitationem libero
-                    autem quam at, iure unde excepturi perferendis dolore tenetur.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-                    exercitationem libero autem quam at, iure unde excepturi
-                    perferendis dolore tenetur.
-                    </p>
+                <Divider />
+                <ProductDescription data={details} />
+                <Stack sx={{ my: 8 }}>
+                <h6 className="font-extrabold text-2xl capitalize">
+                    customer reviews{" "}
+                </h6>
+                <Divider />
+                <Grid container columnSpacing={2}>
+                    <Grid size={{lg:5}}>
+                        <Paper elevation={3} sx={{py:3, px:2,mt:2}}>
+                            <MyRatings starNumber={3} progressValue={2} totalNumber={65} />
+                            <MyRatings starNumber={3} progressValue={2} totalNumber={65} />
+                            <MyRatings starNumber={3} progressValue={2} totalNumber={65} />
+                        </Paper>
+                    </Grid>
+                    <Grid size={{lg:7}}>
+                        <Paper elevation={3} sx={{py:3, px:2,mt:2}}>
+                            <h6>All reviews</h6>
+                            <Divider/>
+                            <Box sx={{mt:1}}>
+                                <h6>No reviews for this product</h6>
+                            </Box>
+                        </Paper>
+                    </Grid>
+                </Grid>
                 </Stack>
-                </Stack>
-            </Grid>
-            </Grid>
-
-            <Stack sx={{ my: 5 }}>
-            <Divider />
-            <h6 className="font-extrabold mt-2 mb-4">
-                Products related to this item
-            </h6>
-            <Grid container spacing={2} sx={{ px: 8 }}>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-            </Grid>
-            </Stack>
-            <Stack sx={{ my: 5 }}>
-            <Divider />
-            <h6 className="font-extrabold mt-2 mb-4">
-                Products related to this item
-            </h6>
-            <Grid container spacing={2} sx={{ px: 8 }}>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
-                <CustomLink href="/" className="productImageLink">
-                    <SingleProductImage />
-                </CustomLink>
-                <SingleProductDetails />
-                </Grid>
-            </Grid>
-            </Stack>
-            <Stack id="#details" sx={{ my: 5 }} gap={2}>
-            <h1 className="text-2xl font-extrabold">Details</h1>
-            <Divider />
-            </Stack>
-            <CustomAccordion data={details}/>
-            <Stack>
-                <h6>customer reviews</h6>
-            </Stack>
-        </Container>
+            </Container>
         </section>
     );
 };

@@ -2,10 +2,11 @@
 
 :root{
     --color-border:#e5e5e5;
-    --color-button:#f5f5f5;
+    --color-bg:#f5f5f5;
     --color-link:#191616;
     --color-text:#535353;
     --color-background:#cacaca;
+    --color-light-background:#efefef;
 }
 
 body{
@@ -21,10 +22,16 @@ body{
         transform: translate(-100%, 0);
     }
 }
+
+@layer theme{
+    
+}
+
 @layer utilities{
     .change-on-hover{
         @apply hover:text-[#e94328]!
     }
+    
 }
 
 @layer components{
@@ -40,13 +47,21 @@ body{
     .product-single_share-faq{
         @apply flex gap-2 items-center cursor-pointer text-(--color-text) text-[12px] transition-all duration-500 hover:text-[#e94328]!
     }
-    input[type=radio]+span{
+    input[type=radio]+.sizeLabel{
         @apply w-full h-11 font-bold text-xs uppercase cursor-pointer mb-0 border-[#e7e7e7] border rounded-[3px] transition-all duration-75 text-(--color-title) items-center justify-center py-4 flex hover:border-black
     }
-    input[type=radio]:checked+span{
+    input[type=radio]:checked+.sizeLabel{
        @apply bg-black border border-black text-white 
     }
-    
+    .cart-details-table th{
+        @apply py-3 text-xs uppercase bg-gray-200
+    }
+    .cart-details-table td{
+        @apply py-3 text-xs uppercase
+    }
+    .required-text{
+        @apply text-red-500 font-bold pl-1
+    }
 }
 
 

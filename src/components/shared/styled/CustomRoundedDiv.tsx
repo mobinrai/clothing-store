@@ -1,6 +1,6 @@
 import { styled } from "@mui/material"
 
-const CustomRoundedDiv = styled('div')(({theme})=>({
+const CustomRoundedDiv = styled('p')(({theme})=>({
     display:'flex',
     justifyContent:'center',
     backgroundColor: "#fff",

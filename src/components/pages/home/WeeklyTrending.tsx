@@ -81,7 +81,7 @@ const WeeklyTrending = () => {
                     </p>
                     <Stack>
                     size:s
-                    <ChooseSize/>
+                    <ChooseSize availableSizes={['xs','s','m','l','xl']}/>
                     </Stack>
                     <Stack
                     direction={"row"}

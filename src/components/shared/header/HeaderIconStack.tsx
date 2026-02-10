@@ -1,7 +1,11 @@
 import { Stack } from "@mui/material";
 import type { ReactNode } from "react";
+import type { ShowShoppingOrSearchContent } from "../../../types/commonTypes";
 
-const HeaderIconStack = ({ children }: { children: ReactNode }) => {
+const HeaderIconStack = ({ children, name,toggleContent}: {name?:ShowShoppingOrSearchContent; children: ReactNode,toggleContent?:(name:ShowShoppingOrSearchContent)=>void }) => {
+    const handleClick = ()=>{
+        if(toggleContent && name) toggleContent(name)
+    }
     return (
         <Stack
         alignItems={"center"}
@@ -18,6 +22,7 @@ const HeaderIconStack = ({ children }: { children: ReactNode }) => {
             transition: "background .17s linear",
             "&:hover": { background: "#000", color: "#fff" },
         }}
+        onClick={handleClick}
         >
         {children}
         </Stack>

@@ -1,26 +1,39 @@
 import {
   ArrowForward,
   PhotoLibraryOutlined,
+  StarOutlineOutlined,
 } from "@mui/icons-material";
-import { Box, Stack, Tooltip } from "@mui/material";
+import { Box, Stack, styled, Tooltip } from "@mui/material";
 import Tshirt1 from "@images/products/t-shirt-5.webp";
 import StyledButton from "../styled/StyledButton";
 import CustomRoundedDiv from "../styled/CustomRoundedDiv";
-import WishlistButton from "../WishlistButton";
+
+const CustomToolTip = styled(Tooltip)(()=>({
+    "&:hover .quickView": {
+        transform: "translateY(0)",
+        opacity: 1,
+    },
+    "&:hover .wishlistBtn": {
+        transform: "translateY(0)",
+        opacity: 1,
+    },
+}))
 
 const SingleProductImage = () => {
     return (
         <Box sx={{ position: "relative",}}>
             <img src={Tshirt1} alt="" style={{borderRadius:10}} />
             <Stack sx={{ position: "absolute", top: 10, right: 15 }}>
-                <Tooltip title="wishlist" placement="left-start" arrow>
-                    <WishlistButton/>
-                </Tooltip>
-                <Tooltip title="quick view" placement="left-start" arrow>
+                <CustomToolTip title="wish list" placement="left-start" arrow>
+                        <CustomRoundedDiv className="wishlistBtn">
+                            <StarOutlineOutlined sx={{ fontSize: "18px" }}/>
+                        </CustomRoundedDiv>
+                    </CustomToolTip>
+                <CustomToolTip title="quick view" placement="left-start" arrow>
                     <CustomRoundedDiv className="quickView">
                         <PhotoLibraryOutlined sx={{ fontSize: "18px" }} />
-                    </CustomRoundedDiv>                        
-                </Tooltip>
+                    </CustomRoundedDiv>
+                </CustomToolTip>
             </Stack>
             <StyledButton
                 className="productAddToCart"
