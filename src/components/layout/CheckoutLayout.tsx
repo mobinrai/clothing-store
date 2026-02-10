@@ -9,7 +9,7 @@ const CheckoutLayout = () => {
                 <div className="max-w-300 mx-auto pb-2 px-10 md:px-20 lg:px-0">
                     <Stack direction={{xs:'column', sm:'row'}} justifyContent={'space-between'}>
                         <Link to={'/'}>
-                            <h6>Clothing Store</h6>
+                            <h1 className="font-bold"><span className="text-red-500 text-2xl -mr-1 italic">Clothing</span> Store</h1>
                         </Link>
                         <Stack direction={'row'} gap={2}>
                             continue shopping

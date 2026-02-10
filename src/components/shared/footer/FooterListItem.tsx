@@ -24,7 +24,7 @@ const FooterListItem = ({
                     fontSize: "0.75rem",
                     color: "var(--color-link)",
                     cursor:'pointer',
-                    transition:'color .3s linear',
+                    transition:'color .3s ease',
                     ":hover":{
                         color:'red'
                     }

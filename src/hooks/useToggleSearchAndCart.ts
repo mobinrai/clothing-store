@@ -13,5 +13,5 @@ export const useToggleSearchAndCart = () => {
             setShowSearchForm(!showSearchForm);
         }
     };
-    return { toggleContent, showCart, showSearchForm };
+    return { toggleContent,setShowCart,setShowSearchForm, showCart, showSearchForm };
 };

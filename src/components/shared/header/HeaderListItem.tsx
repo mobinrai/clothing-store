@@ -5,7 +5,7 @@ import type { HeaderListItemProps } from './headerTypes'
 const HeaderListItem = ({linkTo, title}:HeaderListItemProps) => {
     return (
         <ListItem sx={{width:'fit-content'}}>
-            <NavLink to={linkTo} style={{textTransform:'uppercase', fontWeight:600, fontSize:12}}>{title}</NavLink>
+            <NavLink to={linkTo} className={'font-bold uppercase text-[12px] hover:text-red-500 hover:transition-colors hover:duration-200'}>{title}</NavLink>
         </ListItem>
     )
 }

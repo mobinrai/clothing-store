@@ -1,6 +1,4 @@
 import {
-  Search,
-  ShoppingBasketOutlined,
   StarOutline,
 } from "@mui/icons-material";
 import {
@@ -12,17 +10,15 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import HeaderIconStack from "./HeaderIconStack";
+import CustomRoundStack from "../styled/CustomRoundStack";
 import HeaderListItem from "./HeaderListItem";
 import MenuIcon from "@mui/icons-material/Menu";
-import DrawerCartList from "./DrawerCartList";
-import SearchFormDrawer from "./SearchFormDrawer";
-import { useToggleSearchAndCart } from "../../../hooks/useToggleSearchAndCart";
 import HeaderAuthLink from "./HeaderAuthLink";
 import { Link } from "react-router";
+import HeaderSearchIcon from "./HeaderSearchIcon";
+import HeaderCartIcon from "./HeaderCartIcon";
 
 const TopHeader = () => {
-    const {showCart, showSearchForm, toggleContent}= useToggleSearchAndCart()
     return (
         <Box sx={{ paddingY: 4 }}>
             <Container maxWidth={false}>
@@ -66,11 +62,8 @@ const TopHeader = () => {
                         gap={1}
                         sx={{ display: { xs: "none", sm: "flex" } }}
                         >
-                        <HeaderIconStack name="searchForm" toggleContent={toggleContent}>
-                            <Search sx={{ fontSize: 22 }} />
-                        </HeaderIconStack>
-                        {showSearchForm && <SearchFormDrawer showSearchForm={showSearchForm} toggleContent={toggleContent}/>}
-                        <HeaderIconStack>
+                        <HeaderSearchIcon/>
+                        <CustomRoundStack>
                             <Badge
                             badgeContent={1}
                             color="error"
@@ -78,17 +71,8 @@ const TopHeader = () => {
                             sx={{ top: 10, right: 5, position: "absolute" }}
                             />
                             <StarOutline sx={{ fontSize: 22 }} />
-                        </HeaderIconStack>
-                        <HeaderIconStack name="shoppingCart" toggleContent={toggleContent}>
-                            <Badge
-                            badgeContent={0}
-                            showZero
-                            color="error"
-                            sx={{ top: 10, right: 5, position: "absolute" }}
-                            />
-                            <ShoppingBasketOutlined sx={{ fontSize: 22 }} />
-                        </HeaderIconStack>
-                        {showCart && <DrawerCartList showCart={showCart} toggleContent={toggleContent}/>}
+                        </CustomRoundStack>
+                        <HeaderCartIcon/>
                         <HeaderAuthLink/>
                         </Stack>
                     </Grid>

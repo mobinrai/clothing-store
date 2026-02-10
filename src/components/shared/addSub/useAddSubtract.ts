@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 export function useAddSubtract(){
     const [productQty, setProductQty] = useState(1);
@@ -6,14 +6,14 @@ export function useAddSubtract(){
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value.trim();
         if (value.length > 3) {
-        return false;
+            return false;
         }
         if (parseInt(value)) {
             setProductQty(parseInt(value));
         }
     };
 
-    const handleAddClick=useEffect(()=>{
+    const handleAddClick=useCallback(()=>{
        setProductQty(prev=>prev+1);
     },[])
 
