@@ -14,15 +14,15 @@ import SingleProductImage from "../../shared/singleProductImage";
 import SingleProductDetails from "../../shared/singleProductDetails";
 
 const Collection = () => {
-  const [displayFilterMenu, setDisplayFilterMenu] = useState("none");
-  const methods = useForm<FilterFormSchema>({
-    mode: "all",
-    resolver: zodResolver(formSchema),
-    defaultValues,
-  });
-  const handleClick = () => {
-    setDisplayFilterMenu((prev) => (prev == "none" ? "block" : "none"));
-  };
+    const [displayFilterMenu, setDisplayFilterMenu] = useState("none");
+    const methods = useForm<FilterFormSchema>({
+        mode: "all",
+        resolver: zodResolver(formSchema),
+        defaultValues,
+    });
+    const handleClick = () => {
+        setDisplayFilterMenu((prev) => (prev == "none" ? "block" : "none"));
+    };
     return (
         <section className="all-products my-20">
         <Container maxWidth={false}>

@@ -3,18 +3,19 @@ import Tshirt1 from "@images/products/t-shirt-1.jpg";
 import Tshirt2 from "@images/products/t-shirt-2.jpg";
 import Tshirt3 from "@images/products/t-shirt-3.jpg";
 import {
-  ArrowCircleDownOutlined,
-  ArrowForward,
-  AssignmentReturnOutlined,
-  CommentOutlined,
-  EuroOutlined,
-  HistoryToggleOffOutlined,
-  LocalShippingOutlined,
-  ShoppingBag,
+    ArrowCircleDownOutlined,
+    ArrowForward,
+    AssignmentReturnOutlined,
+    CommentOutlined,
+    EuroOutlined,
+    HistoryToggleOffOutlined,
+    LocalShippingOutlined,
+    ShoppingBag,
 } from "@mui/icons-material";
 import ChooseSize from "../../shared/size";
 import StyledButton from "../../shared/styled/StyledButton";
 import { orange } from "@mui/material/colors";
+import AddSubtractButton from '../../shared/addSub/AddSubtractButton';
 
 const MainProductDetail = ({handleClick}:{handleClick:()=>void}) => {
     return (
@@ -92,19 +93,7 @@ const MainProductDetail = ({handleClick}:{handleClick:()=>void}) => {
                         <span>The model is 190cm tall and wears size M.</span>
                     </Stack>
                     <Stack gap={2} sx={{ position: "relative" }}>
-                        <Box sx={{ display: "contents" }}>
-                        <select
-                            name=""
-                            id=""
-                            className="border py-1 px-2 w-1/4 border-gray-400 rounded-2xl cursor-pointer"
-                        >
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        </Box>
+                        <AddSubtractButton/>
                         <StyledButton
                         sx={{
                             py: 1.5,

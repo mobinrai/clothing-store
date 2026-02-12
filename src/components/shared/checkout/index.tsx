@@ -3,7 +3,7 @@ import CheckItemDetails from "./CheckItemDetails";
 import CheckoutFormProvider from "./CheckoutFormProvider";
 
 
-const checkout = () => {
+const Checkout = () => {
    
     return (
         <div className="max-w-300 mx-auto">
@@ -25,4 +25,4 @@ const checkout = () => {
     );
 };
 
-export default checkout;
+export default Checkout;

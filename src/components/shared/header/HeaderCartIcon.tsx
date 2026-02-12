@@ -1,4 +1,4 @@
-import { Close, Delete, ShoppingBasketOutlined } from "@mui/icons-material";
+import { Close, ShoppingBasketOutlined } from "@mui/icons-material";
 import { Badge, Divider, Drawer, Stack } from "@mui/material";
 import Tshirt1 from "@images/products/t-shirt-5.webp";
 import StyledButton from "../styled/StyledButton";
@@ -41,7 +41,7 @@ const HeaderCartIcon = () => {
                                 <h6 className="font-bold">I am product title</h6>
                                 <span className="font-bold text-lg">$67.79</span>
                                 <Stack direction={'row'} alignItems={'center'} gap={1}>
-                                    <AddSubtractButton/><Delete/>
+                                    <AddSubtractButton deleteIcon/>
                                 </Stack>
                             </Stack>
                         </Stack>

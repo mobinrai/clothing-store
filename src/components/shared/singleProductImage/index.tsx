@@ -22,7 +22,7 @@ const CustomToolTip = styled(Tooltip)(()=>({
 const SingleProductImage = () => {
     return (
         <Box sx={{ position: "relative",}}>
-            <img src={Tshirt1} alt="" style={{borderRadius:10}} />
+            <img src={Tshirt1} alt="" style={{borderRadius:10}} loading="lazy"/>
             <Stack sx={{ position: "absolute", top: 10, right: 15 }}>
                 <CustomToolTip title="wish list" placement="left-start" arrow>
                         <CustomRoundedDiv className="wishlistBtn">

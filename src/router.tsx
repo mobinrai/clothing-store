@@ -1,16 +1,18 @@
 import { createBrowserRouter } from "react-router";
-import Home from "./components/pages/home";
-import ProductDetail from "./components/pages/productDetail";
 import MainLayout from "./components/layout/MainLayout";
-import AboutUs from "./components/pages/AboutUs";
-import ContactUs from "./components/pages/contact/ContactUs";
-import Login from "./components/pages/account/login";
-import ResetPassword from "./components/pages/account/Reset";
-import Register from "./components/pages/account/register/Register";
-import Cart from "./components/shared/cart";
-import CheckoutLayout from "./components/layout/CheckoutLayout";
-import checkout from "./components/shared/checkout";
-import Collection from "./components/pages/collections";
+import React from "react";
+
+const Home = React.lazy(()=> import("./components/pages/home"))
+const ProductDetail = React.lazy(()=> import("./components/pages/productDetail"))
+const AboutUs = React.lazy(()=> import("./components/pages/AboutUs"))
+const ContactUs = React.lazy(()=> import("./components/pages/contact/ContactUs"))
+const Login =React.lazy(()=>import("./components/pages/account/login"))
+const Register =React.lazy(()=>import("./components/pages/account/register/Register"))
+const ResetPassword =React.lazy(()=>import("./components/pages/account/Reset"))
+const Cart =React.lazy(()=>import("./components/shared/cart"))
+const Checkout =React.lazy(()=>import("./components/shared/checkout"))
+const Collection =React.lazy(()=>import("./components/pages/collections"))
+const CheckoutLayout =React.lazy(()=>import("./components/layout/CheckoutLayout"))
 
 const router = createBrowserRouter([
     {
@@ -52,7 +54,7 @@ const router = createBrowserRouter([
         path:'/checkout',
         Component:CheckoutLayout,
         children:[
-            {index:true, Component:checkout}
+            {index:true, Component:Checkout}
         ]
     },
 ])

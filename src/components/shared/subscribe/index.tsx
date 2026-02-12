@@ -3,7 +3,7 @@ import SubscribeForm from "./SubscribeForm"
 
 const index = () => {
     return (
-        <section className="subscribeNewsLetter" style={{background:'var(--color-background)', padding:'60px 0'}}>
+        <section className="subscribeNewsLetter" style={{background:'var(--color-bg)', padding:'60px 0'}}>
             <Container maxWidth={false}>
                 <Stack gap={{lg:2}} textAlign={'center'}>
                     <Box sx={{mb:4}}>

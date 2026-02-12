@@ -1,14 +1,12 @@
-import { Add, HorizontalRule } from '@mui/icons-material'
-import { Box, TextField } from '@mui/material'
+import { Add, Delete, HorizontalRule } from '@mui/icons-material'
+import { IconButton, TextField,} from '@mui/material'
 import { useAddSubtract } from './useAddSubtract'
+import React from 'react'
 
-const AddSubtractButton = () => {
+const AddSubtractButton = ({deleteIcon}:{deleteIcon?:boolean}) => {
     const {productQty, handleAddClick, handleChange, handleSubClick} = useAddSubtract()
     return (
-        <Box sx={{ position: "relative", display: "inline-flex" }}>
-            <a className="add-subt-btn left-2">
-                <HorizontalRule sx={{ fontSize: "16px" }} onClick={handleSubClick}/>
-            </a>
+        <React.Fragment>
             <TextField
             value={productQty}
             onChange={handleChange}
@@ -17,18 +15,22 @@ const AddSubtractButton = () => {
                 input: {
                 sx: {
                     borderRadius: 10,
-                    width: "120px",
-                    padding: "5px !important",
-                    paddingX: "25px !important",
+                    width: "150px",
+                    padding: "5px",
                     height: "40px !important",
                 },
+                startAdornment:<IconButton onClick={handleSubClick}>
+                    <HorizontalRule sx={{ fontSize: "16px" }}/>
+                </IconButton>,
+                endAdornment:<IconButton onClick={handleAddClick}>
+                    <Add sx={{ fontSize: "16px" }}/>
+                </IconButton>,
                 },
             }}
             />
-            <a className="add-subt-btn right-2">
-            <Add sx={{ fontSize: "16px" }}  onClick={handleAddClick}/>
-            </a>
-        </Box>
+            {deleteIcon && <Delete sx={{cursor:'pointer', ': hover':{color:'red'}, transition:'color 0.3s ease'}}/>}
+        </React.Fragment>
+            
     )
 }
 
