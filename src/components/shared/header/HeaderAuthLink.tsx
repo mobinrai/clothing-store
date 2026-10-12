@@ -25,6 +25,9 @@ const HeaderAuthLink = () => {
                 position: "relative",
                 zIndex: 2,
                 textAlign: "center",
+                "&:hover":{
+                    cursor:'pointer'
+                }
             }}
             >
             <Link to={"/account/login"}>Login</Link>

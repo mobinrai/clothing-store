@@ -1,6 +1,6 @@
 import { Box, Container, Divider, Grid, Paper, Stack } from "@mui/material";
 import CustomLink from "../../shared/styled/CustomLink";
-import SingleProductImage from "./../../shared/singleProductImage";
+import SingleProductImage from "../../shared/imageKit";
 import SingleProductDetails from "./../../shared/singleProductDetails";
 import ProductDescription from "./ProductDescription";
 import MyRatings from "../../shared/ratings/MyRatings";
@@ -44,7 +44,28 @@ const index = () => {
                         Supplier number: 50644510244`,
         },
     ];
-    
+    const data={
+        name: '',
+    description: '',
+    brand: '',
+    tags: [],
+    materials: [],
+    mainImages: [],
+    variants:[],
+    category: {
+        name: '',
+    },
+    basePrice: 0,
+    discount: 0,
+    shipmentDays: '',
+    isFeatured: false,
+    ratingAverage: 0,
+    ratingCount: 0,
+    slug: '',
+    _id: '',
+    createdAt: '',
+    updatedAt: '',
+    }
     return (
         <section className="my-20">
             <Container maxWidth={false}>
@@ -89,9 +110,9 @@ const index = () => {
                         }}
                         >
                             <CustomLink href="/itm/1234" className="productImageLink">
-                            <SingleProductImage />
+                            <SingleProductImage imageUrl="" />
                             </CustomLink>
-                            <SingleProductDetails />
+                            <SingleProductDetails data={data} />
                         </Box>
                     ))}
                     </Stack>
@@ -135,9 +156,9 @@ const index = () => {
                         }}
                         >
                             <CustomLink href="/itm/1234" className="productImageLink">
-                            <SingleProductImage />
+                            <SingleProductImage imageUrl="" />
                             </CustomLink>
-                            <SingleProductDetails />
+                            <SingleProductDetails data={data} />
                         </Box>
                     ))}
                     </Stack>

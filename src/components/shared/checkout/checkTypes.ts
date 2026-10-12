@@ -1,3 +1,5 @@
+import type { Control, FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+
 export const BILLING_TYPES={
     SAME:'sameAsBillingAddress',
     DIFFERENT:"differentShippingAddress"
@@ -52,4 +54,11 @@ export const defaultValues:CheckoutFormData={
         houseNumber:'',
         postCode:'',
     }
+}
+
+export type CheckoutFormProps <T extends FieldValues>={
+    billingTypeValue?:'billingAddress'|'differentAddress',
+    register:UseFormRegister<T>,
+    errors:FieldErrors<T>,
+    control:Control<T>
 }

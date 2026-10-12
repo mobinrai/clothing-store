@@ -19,7 +19,7 @@ const Footer = () => {
         }
     ];
     return (
-        <footer style={{borderTop:'1px solid var(--color-border)'}}>
+        <footer style={{borderTop:'1px solid var(--color-border)', backgroundColor:'#282828', color:'#8f8f8f'}}>
             <Container maxWidth={false}>
                 <Grid container spacing={2}>
                     <Grid size={{xs:12, md:4}}>

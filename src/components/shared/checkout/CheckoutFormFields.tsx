@@ -1,11 +1,12 @@
 import { Box, Stack } from "@mui/material";
-import { useFormContext } from "react-hook-form";
+import { get, type FieldValues} from "react-hook-form";
 import CustomSelectFormController from "../../customController/CustomSelectFormController";
-import type { CheckoutSchema } from "./checkoutSchema";
 import CustomTextField from "../../customController/CustomTextField";
+import type {  Path } from "react-hook-form";
+import type { CheckoutFormProps } from "./checkTypes";
 
-const CheckoutFormFields = ({billingTypeValue='billingAddress'}:{billingTypeValue?:'billingAddress'|'differentAddress'})=>{
-    const {register,formState:{errors}} = useFormContext<CheckoutSchema>()
+const CheckoutFormFields = <T extends FieldValues>({
+    billingTypeValue='billingAddress', register, errors, control}:CheckoutFormProps<T>)=>{
     const countries = [{
         value:'germany',
         label:'Germany'
@@ -13,63 +14,63 @@ const CheckoutFormFields = ({billingTypeValue='billingAddress'}:{billingTypeValu
         value:'unitedKingdom',
         label:'United Kingdom'
     }];
-    
+
     return (
         <>
-            <CustomSelectFormController name={`${billingTypeValue}country`} options={countries}/>
+            <CustomSelectFormController<T> control={control} name={`${billingTypeValue}country` as Path<T>} options={countries}/>
             <Box display={"flex"} gap={2}>
                 <Box flex={1}>
-                    <CustomTextField<CheckoutSchema>
-                    name={`${billingTypeValue}.firstName`}
+                    <CustomTextField<T>
+                    name={`${billingTypeValue}.firstName` as Path<T>}
                     placeHolder="First name"
                     label="First Name"
                     register={register}
-                    error={errors?.[billingTypeValue]?.firstName}
+                    error={get(errors, `${billingTypeValue}.firstName`)}
                 />
                 </Box>
                 <Box flex={1}>
-                    <CustomTextField<CheckoutSchema>
-                    name={`${billingTypeValue}.lastName`}
+                    <CustomTextField<T>
+                    name={`${billingTypeValue}.lastName` as Path<T>}
                     placeHolder="Last name"
                     label="Last Name"
                     register={register}
-                    error={errors?.[billingTypeValue]?.lastName}
+                    error={get(errors, `${billingTypeValue}.lastName`)}
                 />
                 </Box>
             </Box>
-            <CustomTextField<CheckoutSchema>
-                name={`${billingTypeValue}.city`}
+            <CustomTextField<T>
+                name={`${billingTypeValue}.city` as Path<T>}
                 placeHolder="City"
                 label="City"
                 register={register}
-                error={errors?.[billingTypeValue]?.city}
+                error={get(errors, `${billingTypeValue}.city`)}
                 />
-            <CustomTextField<CheckoutSchema>
-                name={`${billingTypeValue}.street`}
+            <CustomTextField<T>
+                name={`${billingTypeValue}.street` as Path<T>}
                 placeHolder="Street"
                 label="Street"
                 register={register}
-                error={errors?.[billingTypeValue]?.street}
+                error={get(errors, `${billingTypeValue}.street`)}
                 />
             
             <Stack direction={'row'} gap={1}>
                 <Box flex={1}>
-                    <CustomTextField<CheckoutSchema>
-                    name={`${billingTypeValue}.houseNumber`}
+                    <CustomTextField<T>
+                    name={`${billingTypeValue}.houseNumber` as Path<T>}
                     placeHolder="House Number"
                     label="House number"
                     register={register}
                     sx={{flex:1}}
-                    error={errors?.[billingTypeValue]?.houseNumber}
+                    error={get(errors, `${billingTypeValue}.houseNumber`)}
                     />
                 </Box>
                 <Box flex={1}>
-                    <CustomTextField<CheckoutSchema>
-                    name={`${billingTypeValue}.postCode`}
+                    <CustomTextField<T>
+                    name={`${billingTypeValue}.postCode` as Path<T>}
                     placeHolder="Post code"
                     label="Post Code"
                     register={register}
-                    error={errors?.[billingTypeValue]?.postCode}
+                    error={get(errors, `${billingTypeValue}.postCode`)}
                     />
                 </Box>
             </Stack>

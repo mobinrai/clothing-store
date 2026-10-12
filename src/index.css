@@ -14,17 +14,44 @@ body{
 }
 
 
-@keyframes slideText {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-100%, 0);
-    }
+/* 
+.swiper-slide-active .hs-item span {
+	-webkit-transition: all 0.5s ease 0.2s;
+	-o-transition: all 0.5s ease 0.2s;
+	transition: all 0.5s ease 0.2s;
 }
 
-@layer theme{
+.swiper-slide-active .hs-item h2 {
+	-webkit-transition: all 0.5s ease 0.4s;
+	-o-transition: all 0.5s ease 0.4s;
+	transition: all 0.5s ease 0.4s;
+}
+
+.swiper-slide-active .hs-item p {
+	-webkit-transition: all 0.5s ease 0.6s;
+	-o-transition: all 0.5s ease 0.6s;
+	transition: all 0.5s ease 0.6s;
+}
+
+.swiper-slide-active .hs-item .site-btn {
+	-webkit-transition: all 0.5s ease 0.8s;
+	-webkit-transition: all 0.5s ease 0.8s;
+	-o-transition: all 0.5s ease 0.8s;
+	transition: all 0.5s ease 0.8s;
+} */
+
+
+@theme{
+    --shadow-custom:5px 8px 12px #747373e0;
     
+    @keyframes slideText {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(-100%, 0);
+        }
+    }
 }
 
 @layer utilities{
@@ -61,6 +88,15 @@ body{
     }
     .required-text{
         @apply text-red-500 font-bold pl-1
+    }
+    .adm-li{
+        @apply bg-(--color-bg) p-2 hover:bg-gray-400 hover:text-white transition-all duration-300 hover:cursor-pointer mb-2
+    }
+    .adm-li a{
+        @apply flex gap-1
+    }
+    .swiper-slide-active .slider-link-button{
+        @apply transition-all duration-75 ease-in delay-75 bg-[#cb354e] p-3 text-white hover:bg-black w-40 text-center 
     }
 }
 

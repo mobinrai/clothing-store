@@ -5,19 +5,25 @@ import {
   Stack,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useFormContext, type SubmitHandler } from "react-hook-form";
+import { type SubmitHandler } from "react-hook-form";
 import { BILLING_TYPES, billingTypes } from "./checkTypes";
 import CustomRadioFormController from "../../customController/CustomRadioFormController";
-import type { CheckoutSchema } from "./checkoutSchema";
-
-// import CustomTextField from "../../customController/CustomTextField";
+import { formSchema, type CheckoutSchema } from "./checkoutSchema";
+import { useForm } from "react-hook-form";
+import { defaultValues } from './checkTypes';
+import { zodResolver } from "@hookform/resolvers/zod";
 
 
 type ShippingOption = "sameAsBillingAddress" | "differentShippingAddress";
 
 const CheckoutForm = () => {
-    const { handleSubmit, resetField} = useFormContext<CheckoutSchema>()
+    const {control, register, formState:{errors}, handleSubmit, resetField} = useForm<CheckoutSchema>({
+            mode: "all",
+            defaultValues,
+            resolver:zodResolver(formSchema)
+        });
     const [billingAddress, setBillingAddress] = useState<ShippingOption>(BILLING_TYPES.SAME);
+
     const handleToggle = (event:React.ChangeEvent<HTMLInputElement>) => {
         const value =event.target.value as "sameAsBillingAddress" | "differentShippingAddress"
         if(value==BILLING_TYPES.SAME){
@@ -39,35 +45,22 @@ const CheckoutForm = () => {
         setBillingAddress(value);
     };
     const onSubmit: SubmitHandler<CheckoutSchema> = (data) => {
-        console.log(data);
     };
     return (
-        
         <form action="" className="checkoutForm" onSubmit={handleSubmit(onSubmit)}>
             <span className="text-xs text-red-600 font-bold">important note: field with * are necessary.</span>
-            {/* <Stack gap={2}>
-                <CustomTextField<CheckoutSchema>
-                    name={'email'}
-                    placeHolder="Email"
-                    label="Email"
-                    register={register}
-                    error={errors?.email}
-                />
-                <span className="text-xs text-(--color-text)">
-                Email me with news and offers
-                </span>
-            </Stack> */}
             <h6 className="my-5 font-extrabold border-b border-gray-300">Delivery</h6>
             <Stack gap={3}>
-                <CheckoutFormFields/>
+                <CheckoutFormFields<CheckoutSchema> register={register} errors={errors} control={control}/>
                 <h6 className="my-2 font-extrabold border-b border-gray-300">
                     Billing Address
                 </h6>                
                 <CustomRadioFormController<CheckoutSchema>
                 name="billingAddressType"
                 options={billingTypes}
-                handleClick={handleToggle}/>                
-                <Box>                                        
+                handleClick={handleToggle}
+                control={control}/>                
+                <Box>
                     {
                         billingAddress === BILLING_TYPES.DIFFERENT &&  (
                         <Stack
@@ -75,7 +68,7 @@ const CheckoutForm = () => {
                         gap={3}
                         >
                         <span className="text-xs text-red-600 font-bold">note: If you click on same as billing address. your different billing address will be empty.</span>
-                            <CheckoutFormFields billingTypeValue="differentAddress"/>
+                            <CheckoutFormFields<CheckoutSchema> register={register} errors={errors} control={control} billingTypeValue="differentAddress"/>
                         </Stack>)
                     }
                 </Box>

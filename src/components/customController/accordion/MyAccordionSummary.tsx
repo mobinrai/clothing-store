@@ -1,15 +1,17 @@
 // import { KeyboardArrowDown } from '@mui/icons-material'
 import { AccordionSummary, type SxProps } from '@mui/material'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
-const MyAccordionSummary = ({summaryText,sx, icon}:{summaryText:string,sx?:SxProps, icon:ReactElement}) => {
-    // const defaultIcon = <KeyboardArrowDown />
+type MyAccordionSummaryProps={summaryText?:string,sx?:SxProps,icon?:ReactElement,children?:ReactNode}
+
+const MyAccordionSummary = ({summaryText,sx, icon,children}:MyAccordionSummaryProps) => {
+
     return (
         <AccordionSummary
             expandIcon={icon}
-            sx={{...sx, flexDirection: "row-reverse", px: 0 }}
+            sx={{...sx, flexDirection: "row-reverse", p: 0}}
         >
-            <h6 className="ml-2 font-bold">{summaryText}</h6>
+            {children || <h6 className="font-bold">{summaryText}</h6>}
         </AccordionSummary>
     )
 }

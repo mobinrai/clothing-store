@@ -4,9 +4,11 @@ import {
 import {
   Badge,
   Box,
+  Button,
   Container,
   Grid,
   List,
+  MenuItem,
   Stack,
   Typography,
 } from "@mui/material";
@@ -17,8 +19,12 @@ import HeaderAuthLink from "./HeaderAuthLink";
 import { Link } from "react-router";
 import HeaderSearchIcon from "./HeaderSearchIcon";
 import HeaderCartIcon from "./HeaderCartIcon";
+import useAddToCart from "../../../hooks/useAddToCart";
+import type { ShoppingCartItem } from "../../../types/commonTypes";
+import ToggleMenu from "../toggleMenu";
 
 const TopHeader = () => {
+    const {carts,user, logout, handleAddToCart} = useAddToCart()
     return (
         <Box sx={{ paddingY: 4 }}>
             <Container maxWidth={false}>
@@ -58,7 +64,7 @@ const TopHeader = () => {
                     <Grid size={{ sm: 5, md: 4, lg: 4 }}>
                         <Stack
                         direction={"row"}
-                        justifyContent={"flex-end"}
+                        justifyContent={"flex-end"}                        
                         gap={1}
                         sx={{ display: { xs: "none", sm: "flex" } }}
                         >
@@ -72,8 +78,19 @@ const TopHeader = () => {
                             />
                             <StarOutline sx={{ fontSize: 22 }} />
                         </CustomRoundStack>
-                        <HeaderCartIcon/>
-                        <HeaderAuthLink/>
+                        <HeaderCartIcon data={{carts:carts as ShoppingCartItem,handleAddToCart}}/>
+                        {
+                            user ? <Stack direction={'row'} alignItems={'center'}>
+                                <h6 className="font-bold">{user.email}</h6>
+                                <ToggleMenu>
+                                    <MenuItem>
+                                        <Button onClick={logout}>Logout</Button>
+                                    </MenuItem>
+                                </ToggleMenu>
+                            </Stack>
+                            :
+                            <HeaderAuthLink/>
+                        }
                         </Stack>
                     </Grid>
                 </Grid>

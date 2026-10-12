@@ -6,7 +6,7 @@ import type { FilterFormSchema } from "./filterFormSchema";
 import FilterSectionAccordion from "./FilterSectionAccordion";
 import CustomRadioFormController from "../../customController/CustomRadioFormController";
 import DisplayCategoryList from "./DisplayCategoryList";
-import ChooseSize from "../../shared/size";
+import ChooseSize from "../../shared/sizeandcolor";
 
 const FilterForm = () => {
     const { handleSubmit } = useFormContext<FilterFormSchema>();
@@ -19,13 +19,13 @@ const FilterForm = () => {
         "trousers",
     ];
     const onStock = [
-        { value: "onStock", label: "On Stock" },
-        { value: "outOfStock", label: "Out of Stock" },
+        { id: 'onStock',value: "onStock", label: "On Stock" },
+        { id: 'onStock',value: "outOfStock", label: "Out of Stock" },
     ];
     const brands = [
-        { value: "adidas", label: "Adidas" },
-        { value: "puma", label: "Puma" },
-        { value: "jack&jones", label: "Jack and Jones" },
+        { id:'1234567', value: "adidas", label: "Adidas" },
+        { id:'34534545', value: "puma", label: "Puma" },
+        { id:'345345345', value: "jack&jones", label: "Jack and Jones" },
     ];
 
     const onSubmit = (data: FilterFormSchema) => {
@@ -55,18 +55,20 @@ const FilterForm = () => {
             summaryText="Availability"
             ComponentName={CustomRadioFormController}
             />
+
             <FilterSectionAccordion<FilterFormSchema>
             name="brands"
             options={brands}
             summaryText="Brands"
             />
+            
             <FilterSectionAccordion<FilterFormSchema>
             name="materials"
             options={brands}
             summaryText="Materials"
             />
             <FilterSectionAccordion<FilterFormSchema>
-            name="productType"
+            name="ProductItem"
             options={brands}
             summaryText="Product Type"
             />

@@ -4,7 +4,7 @@ export const formSchema=z.object({
     materials:z.array(z.string()).optional(),
     availability:z.string().optional(),
     brands:z.array(z.string()).optional(),
-    productType:z.array(z.string()).optional(),
+    ProductItem:z.array(z.string()).optional(),
     sizes:z.array(z.string()).optional()
 })
 
@@ -14,6 +14,6 @@ export const defaultValues:FilterFormSchema={
     materials:[],
     availability:'',
     brands:[],
-    productType:[],
+    ProductItem:[],
     sizes:[]
 }

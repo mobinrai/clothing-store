@@ -6,7 +6,7 @@ import Languages from './Languages'
 
 const FooterBottom = () => {
     return (
-        <Stack borderTop={'1px solid var(--color-border)'} paddingY={6}>
+        <Stack borderTop={'1px solid var(--color-border)'} color='#8f8f8f' paddingY={6}>
                 <Container maxWidth={false}>
                     <Grid container gap={{xs:4,md:0, lg:0}}>
                         <Grid size={{xs:12,md:6,lg:4}}>

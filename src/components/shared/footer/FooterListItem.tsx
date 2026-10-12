@@ -22,7 +22,7 @@ const FooterListItem = ({
                     textTransform: "uppercase",
                     "& .MuiListItemText-primary": {
                     fontSize: "0.75rem",
-                    color: "var(--color-link)",
+                    color: '#8f8f8f',
                     cursor:'pointer',
                     transition:'color .3s ease',
                     ":hover":{

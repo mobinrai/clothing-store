@@ -6,18 +6,17 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { Controller, useFormContext, type FieldValues } from "react-hook-form";
+import { Controller, type FieldValues } from "react-hook-form";
 import type { CommonCustomFormControllerProps } from "../../types/commonTypes";
-
 
 const CustomRadioFormController = <T extends FieldValues>({
     options,
     name,
     label,
     sx,
+    control,
     handleClick
     }: CommonCustomFormControllerProps<T>) => {
-    const { control } = useFormContext();
     return (
         <Controller
         name={name}

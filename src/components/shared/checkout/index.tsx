@@ -1,17 +1,15 @@
 import {Grid } from "@mui/material";
 import CheckItemDetails from "./CheckItemDetails";
-import CheckoutFormProvider from "./CheckoutFormProvider";
+import CheckoutForm from "./CheckoutForm";
 
-
-const Checkout = () => {
-   
+const Checkout = () => {   
     return (
         <div className="max-w-300 mx-auto">
         <div className="px-10 md:px-20 lg:px-0">
             <Grid container>
             <Grid size={{ xs: 12, md: 6 }} order={{ xs: 2, md: 1 }}>
                 <div className="pt-20 pr-10">
-                    <CheckoutFormProvider/>
+                    <CheckoutForm/>
                 </div>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }} order={{ xs: 1, md: 2 }}>

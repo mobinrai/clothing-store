@@ -1,15 +1,16 @@
 import { Add, Delete, HorizontalRule } from '@mui/icons-material'
-import { IconButton, TextField,} from '@mui/material'
-import { useAddSubtract } from './useAddSubtract'
+import { Box, IconButton, TextField,} from '@mui/material'
 import React from 'react'
 
-const AddSubtractButton = ({deleteIcon}:{deleteIcon?:boolean}) => {
-    const {productQty, handleAddClick, handleChange, handleSubClick} = useAddSubtract()
+const AddSubtractButton = ({deleteIcon, value=0}:{value:number,deleteIcon?:boolean}) => {
     return (
         <React.Fragment>
+            <Box>
+                <h6>Number: </h6>
+            </Box>
             <TextField
-            value={productQty}
-            onChange={handleChange}
+            value={value}
+            onChange={()=>{console.log('asdf')}}
             sx={{}}
             slotProps={{
                 input: {
@@ -19,10 +20,10 @@ const AddSubtractButton = ({deleteIcon}:{deleteIcon?:boolean}) => {
                     padding: "5px",
                     height: "40px !important",
                 },
-                startAdornment:<IconButton onClick={handleSubClick}>
+                startAdornment:<IconButton onClick={()=>{console.log('add')}}>
                     <HorizontalRule sx={{ fontSize: "16px" }}/>
                 </IconButton>,
-                endAdornment:<IconButton onClick={handleAddClick}>
+                endAdornment:<IconButton onClick={()=>{console.log('subtract')}}>
                     <Add sx={{ fontSize: "16px" }}/>
                 </IconButton>,
                 },

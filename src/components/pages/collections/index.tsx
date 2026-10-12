@@ -10,7 +10,7 @@ import { Box, Container, Grid,  Stack } from "@mui/material";
 import { useState } from "react";
 import { Tune } from "@mui/icons-material";
 import CustomLink from "../../shared/styled/CustomLink";
-import SingleProductImage from "../../shared/singleProductImage";
+import SingleProductImage from "../../shared/imageKit";
 import SingleProductDetails from "../../shared/singleProductDetails";
 
 const Collection = () => {

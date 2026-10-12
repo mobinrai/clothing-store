@@ -12,7 +12,7 @@ import {
     LocalShippingOutlined,
     ShoppingBag,
 } from "@mui/icons-material";
-import ChooseSize from "../../shared/size";
+import ChooseSize from "../../shared/sizeandcolor";
 import StyledButton from "../../shared/styled/StyledButton";
 import { orange } from "@mui/material/colors";
 import AddSubtractButton from '../../shared/addSub/AddSubtractButton';

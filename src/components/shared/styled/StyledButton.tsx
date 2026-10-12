@@ -5,25 +5,28 @@ interface MyButtonProps {
     hoverBackgroundColor?: string;
     bgColor?: string;
     textColor?: string;
-    hoverTextColor?:string
+    hoverTextColor?:string,
+    minWidth?:string
 }
 
 const StyledButton = styled(Button, {
     shouldForwardProp: (props) =>
-        !["hoverBackgroundColor", "textColor", "bgColor", "hoverTextColor"].includes(props as string),
+        !["hoverBackgroundColor", "textColor", "bgColor", "hoverTextColor", "minWidth"].includes(props as string),
     })<MyButtonProps>(
     ({
         theme,
         textColor,
         bgColor,
         hoverBackgroundColor,
-        hoverTextColor
+        hoverTextColor,
+        minWidth
     }) => ({
         paddingX: theme.spacing(3),
         backgroundColor: bgColor ?? theme.palette.common.black,
         borderRadius: "50px",
+        cursor:'pointer',
         color: textColor ?? theme.palette.common.white,
-        minWidth: "150px",
+        minWidth: minWidth ?? "150px",
         boxShadow:'5px 8px 12px #747373e0',
         "& .MuiButton-endIcon": {
         transform: "rotate(-45deg)",

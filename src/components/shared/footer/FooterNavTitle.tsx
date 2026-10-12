@@ -4,6 +4,7 @@ const FooterNavTitle = ({ title }: { title: string }) => {
     return (
         <Typography
         variant="h6"
+        color="white"
         fontWeight={700}
         textTransform={"uppercase"}
         fontSize={16}

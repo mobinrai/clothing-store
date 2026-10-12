@@ -6,12 +6,26 @@ import './index.css'
 import { ThemeProvider } from '@emotion/react'
 import theme from './theme.tsx'
 import { CssBaseline } from '@mui/material'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { MySnackBarProvider } from './provider/MySnackBarProvider.tsx'
+import { ImageKitProvider } from '@imagekit/react';
+import GlobalModalProvider from './provider/GlobalModal.tsx'
+const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <ThemeProvider theme={theme}>
-            <CssBaseline/>
-            <RouterProvider router={router}/>
-        </ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme}>
+                <CssBaseline/>
+                    <ImageKitProvider urlEndpoint={import.meta.env.VITE_IMAGEKIT_URL}>
+                        <GlobalModalProvider>
+                            <MySnackBarProvider>
+                                <RouterProvider router={router}/>
+                            </MySnackBarProvider>
+                        </GlobalModalProvider>                        
+                    </ImageKitProvider>
+            </ThemeProvider>
+        </QueryClientProvider>
+        
     </StrictMode>,
 )
